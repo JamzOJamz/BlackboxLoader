@@ -1,4 +1,5 @@
 #include "plugin_loader.h"
+#include "config_reader.h"
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -11,6 +12,11 @@ void LoadPlugins()
     HANDLE hFind;
     char dllPath[MAX_PATH];
     int capacity = 10;
+
+    // Check if loader should be activated based on configuration
+    if (!ShouldActivateLoader()) {
+        return;
+    }
 
     hPluginDlls = (HMODULE*)malloc(capacity * sizeof(HMODULE));
     if (hPluginDlls == NULL) {

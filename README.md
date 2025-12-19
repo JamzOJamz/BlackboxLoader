@@ -16,7 +16,8 @@ It can be used for **game modding**, following a similar concept to **MelonLoade
 
 - DLL proxying via `version.dll` or `winhttp.dll` (build-time selectable)
 - Automatic plugin loading from `Blackbox/` directory
-- No configuration files or runtime dependencies
+- Configuration file support via `Blackbox.ini`
+- Conditional loading based on process name and enabled state
 - Pure C implementation with minimal footprint
 - Early-process execution for low-level access
 
@@ -31,6 +32,54 @@ cmake -DPROXY_DLL=WINHTTP ..  # builds winhttp.dll
 
 Place the output DLL next to the target executable.
 
+## Configuration
+
+BlackboxLoader supports optional configuration via a `Blackbox.ini` file placed next to the loader DLL.
+
+### Blackbox.ini Format
+
+```ini
+[Loader]
+Enabled=true
+TargetProcess=notepad.exe,calc.exe
+```
+
+### Configuration Options
+
+#### `Enabled`
+- **Type**: Boolean (`true`/`false`, `yes`/`no`, `1`/`0`)
+- **Default**: `true`
+- **Description**: Controls whether the loader is active. Set to `false` to disable plugin loading.
+
+#### `TargetProcess`
+- **Type**: Comma-separated list of process names
+- **Default**: All processes (if not specified)
+- **Description**: Restricts loader activation to specific processes. If specified, plugins will only load when the current process name matches one of the listed names. Process names are case-insensitive.
+
+### Configuration Examples
+
+**Load plugins for all processes:**
+```ini
+[Loader]
+Enabled=true
+```
+
+**Load plugins only for specific processes:**
+```ini
+[Loader]
+Enabled=true
+TargetProcess=game.exe,launcher.exe
+```
+
+**Disable the loader entirely:**
+```ini
+[Loader]
+Enabled=false
+```
+
+**No configuration file:**
+If `Blackbox.ini` is not present, the loader behaves as if `Enabled=true` with no process restrictions.
+
 ## Plugins
 
 - Plugins must be unmanaged DLLs
@@ -43,6 +92,7 @@ Place the output DLL next to the target executable.
 ```
 <application root>/
 ├── version.dll      # BlackboxLoader
+├── Blackbox.ini     # Optional configuration file
 └── Blackbox/
     ├── plugin1.dll
     └── plugin2.dll
