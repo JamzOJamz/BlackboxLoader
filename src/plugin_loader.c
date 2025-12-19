@@ -25,6 +25,8 @@ void LoadPlugins()
 
     hFind = FindFirstFileA(".\\Blackbox\\*.dll", &findData);
     if (hFind == INVALID_HANDLE_VALUE) {
+        free(hPluginDlls);
+        hPluginDlls = NULL;
         return;
     }
 
