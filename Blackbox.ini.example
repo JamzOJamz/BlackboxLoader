@@ -1,0 +1,10 @@
+[Loader]
+# Enable or disable the Blackbox loader
+# Accepted values: true/false, yes/no, 1/0, on/off (case insensitive)
+Enabled=true
+
+# Comma-separated list of target process names (case insensitive)
+# If specified, the loader will only activate when running in one of these processes
+# If not specified or empty, the loader will work with all processes
+# Example: notepad.exe,calc.exe,game.exe
+TargetProcess=
