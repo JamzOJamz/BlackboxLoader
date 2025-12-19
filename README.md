@@ -1,4 +1,4 @@
-# BlackboxLoader (Blackbox Loader)
+# BlackboxLoader
 
 **BlackboxLoader** is a minimal Windows DLL loader based on classic **DLL proxying / hijacking**.  
 It replaces a legitimate system DLL (`version.dll`), and loads unmanaged plugin DLLs from a `Blackbox/` directory.
@@ -31,3 +31,4 @@ It can be used for **game modding**, following a similar concept to **MelonLoade
 ## License
 
 MIT
+
