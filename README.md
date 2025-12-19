@@ -24,7 +24,7 @@ It can be used for **game modding**, following a similar concept to **MelonLoade
 
 Select the proxied DLL at compile time:
 
-```cmake
+```bash
 cmake -DPROXY_DLL=VERSION ..  # builds version.dll (default)
 cmake -DPROXY_DLL=WINHTTP ..  # builds winhttp.dll
 ```
@@ -51,3 +51,4 @@ Place the output DLL next to the target executable.
 ## License
 
 MIT
+
