@@ -11,6 +11,8 @@ set(COMMON_SOURCES
     src/dllmain.c
     src/plugin_loader.c
     src/proxy_exports.c
+    src/ini_parser.c
+    src/config_reader.c
 )
 
 # Configure based on proxy type

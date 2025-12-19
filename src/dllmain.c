@@ -4,7 +4,6 @@
  */
 
 #include <windows.h>
-#include "config.h"
 #include "plugin_loader.h"
 #include "proxy_exports.h"
 

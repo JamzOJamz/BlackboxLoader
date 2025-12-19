@@ -1,4 +1,5 @@
 #include "plugin_loader.h"
+#include "config_reader.h"
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -12,6 +13,10 @@ void LoadPlugins()
     char dllPath[MAX_PATH];
     int capacity = 10;
 
+    if (!ShouldActivateLoader()) {
+        return;
+    }
+
     hPluginDlls = (HMODULE*)malloc(capacity * sizeof(HMODULE));
     if (hPluginDlls == NULL) {
         return;
@@ -19,6 +24,8 @@ void LoadPlugins()
 
     hFind = FindFirstFileA(".\\Blackbox\\*.dll", &findData);
     if (hFind == INVALID_HANDLE_VALUE) {
+        free(hPluginDlls);
+        hPluginDlls = NULL;
         return;
     }
 

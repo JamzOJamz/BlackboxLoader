@@ -16,7 +16,7 @@ It can be used for **game modding**, following a similar concept to **MelonLoade
 
 - DLL proxying via `version.dll` or `winhttp.dll` (build-time selectable)
 - Automatic plugin loading from `Blackbox/` directory
-- No configuration files or runtime dependencies
+- Configuration file support via `Blackbox.ini`
 - Pure C implementation with minimal footprint
 - Early-process execution for low-level access
 
@@ -31,6 +31,10 @@ cmake -DPROXY_DLL=WINHTTP ..  # builds winhttp.dll
 
 Place the output DLL next to the target executable.
 
+## Configuration
+
+BlackboxLoader supports optional configuration via a `Blackbox.ini` file placed next to the loader DLL. See [Blackbox.ini.example](https://github.com/JamzOJamz/BlackboxLoader/blob/main/Blackbox.ini.example) in the root of the repository.
+
 ## Plugins
 
 - Plugins must be unmanaged DLLs
@@ -43,6 +47,7 @@ Place the output DLL next to the target executable.
 ```
 <application root>/
 ├── version.dll      # BlackboxLoader
+├── Blackbox.ini     # Optional configuration file
 └── Blackbox/
     ├── plugin1.dll
     └── plugin2.dll

@@ -1,7 +1,7 @@
 #pragma once
 
 #include <windows.h>
-#include "config.h"
+#include "proxy_target.h"
 
 /**
  * Initializes the proxy by loading the original DLL and retrieving function pointers.
