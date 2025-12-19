@@ -38,7 +38,7 @@ Place the output DLL next to the target executable.
 - Load order is filesystem-dependent
 - No plugin API is imposed; plugins execute their own `DllMain`
 
-## Directory Layout
+## Example Directory Layout
 
 ```
 <application root>/
@@ -51,4 +51,3 @@ Place the output DLL next to the target executable.
 ## License
 
 MIT
-
