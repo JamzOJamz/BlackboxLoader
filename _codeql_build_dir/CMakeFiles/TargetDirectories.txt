@@ -1,0 +1,3 @@
+/home/runner/work/BlackboxLoader/BlackboxLoader/_codeql_build_dir/CMakeFiles/BlackboxLoader.dir
+/home/runner/work/BlackboxLoader/BlackboxLoader/_codeql_build_dir/CMakeFiles/edit_cache.dir
+/home/runner/work/BlackboxLoader/BlackboxLoader/_codeql_build_dir/CMakeFiles/rebuild_cache.dir
