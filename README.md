@@ -51,4 +51,3 @@ Place the output DLL next to the target executable.
 ## License
 
 MIT
-
