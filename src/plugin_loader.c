@@ -23,6 +23,11 @@ void LoadPlugins()
     }
 
     do {
+        // Validate filename length to prevent buffer overflow
+        if (strlen(findData.cFileName) > MAX_PATH - 12) { // 12 = length of ".\\Blackbox\\" + null terminator
+            continue;
+        }
+        
         snprintf(dllPath, MAX_PATH, ".\\Blackbox\\%s", findData.cFileName);
 
         HMODULE hModule = LoadLibraryA(dllPath);

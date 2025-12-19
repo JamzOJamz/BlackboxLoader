@@ -2,6 +2,10 @@
 #include <stdio.h>
 #include <string.h>
 
+#if IS_PROXY_WINHTTP
+#include <winhttp.h>
+#endif
+
 static HMODULE hOriginalDll = NULL;
 
 #if IS_PROXY_VERSION
@@ -57,8 +61,9 @@ BOOL InitializeProxy()
         return FALSE;
     }
 
-    strcat_s(systemPath, MAX_PATH, "\\");
-    strcat_s(systemPath, MAX_PATH, PROXY_DLL_NAME);
+    // Build the full path to the system DLL
+    int pathLen = (int)strlen(systemPath);
+    snprintf(systemPath + pathLen, MAX_PATH - pathLen, "\\%s", PROXY_DLL_NAME);
 
     hOriginalDll = LoadLibraryA(systemPath);
     if (hOriginalDll == NULL) {
